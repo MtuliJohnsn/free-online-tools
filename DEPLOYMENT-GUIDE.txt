@@ -1,0 +1,25 @@
+HABARI — DEPLOYMENT NOTES
+
+CONTACT EMAIL SETUP
+1. Visit https://web3forms.com/ and create a form using the email address where you want to receive Habari contact messages.
+2. Verify that email address and copy the Web3Forms Access Key.
+3. In Cloudflare Pages project settings, open Settings > Environment variables.
+4. Add VITE_WEB3FORMS_ACCESS_KEY and paste your Access Key as its value. Add it for Production (and Preview if you want preview forms to work).
+5. Trigger a new deployment after saving the variable. Vite reads VITE_ variables during the build.
+6. In Web3Forms form settings, add habari.uk and www.habari.uk as allowed domains if the dashboard offers Allowed Domains.
+7. Test the Contact page with a message you can recognize. Check your inbox and spam folder.
+
+CLOUDFLARE PAGES BUILD SETTINGS
+Framework preset: Vite
+Build command: npm run build
+Build output directory: dist
+Root directory: project (ONLY if your GitHub repository contains the project folder and the package.json is inside it). If you upload the contents of this project folder to the repository root, leave Root directory blank.
+Production branch: main
+
+CUSTOM DOMAIN
+After the first successful deployment, open the Pages project > Custom domains > Set up a domain, and add habari.uk. Follow the Cloudflare prompts. Add www.habari.uk separately if you want the www version too.
+
+IMPORTANT
+- Do not put passwords, Supabase service-role keys, or other private server secrets in VITE_ variables. VITE_ variables are included in browser code. The Web3Forms Access Key is intended for use in a client-side form.
+- The Contact page now sends form submissions through Web3Forms. Email delivery is not active until the Access Key is configured in Cloudflare and a new build is deployed.
+- The existing Supabase migration is no longer required for the Contact form.
