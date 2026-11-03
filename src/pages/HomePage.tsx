@@ -1,21 +1,76 @@
-            <span className="text-sm font-medium text-slate-600">Popular:</span>
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { 
+  Search, 
+  ArrowRight, 
+  Clapperboard, 
+  ShieldCheck, 
+  Zap, 
+  Lock 
+} from 'lucide-react';
+import ToolCard from '../components/ToolCard';
+import { CATEGORIES, QUICK_TOOLS, searchTools } from '../data/tools';
+
+const TRUST_POINTS = [
+  { icon: Zap, label: '100% Free & Fast' },
+  { icon: Lock, label: 'No Account Required' },
+  { icon: ShieldCheck, label: 'Private & Secure' },
+];
+
+export default function HomePage() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-b from-navy-900 via-navy-800 to-navy-900 py-20 text-white">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+            Simple, Useful Free Online Tools
+          </h1>
+          <p className="mt-4 text-lg text-slate-300 sm:text-xl">
+            Fast, secure, and easy-to-use web applications for everyday calculations, text editing, and utilities.
+          </p>
+
+          {/* Search Bar */}
+          <div className="relative mt-8 max-w-2xl mx-auto">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+              <Search className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="Search for a tool (e.g., Password Generator, Word Counter)..."
+              className="w-full rounded-full border-0 bg-white py-4 pl-11 pr-4 text-navy-900 shadow-lg ring-1 ring-slate-200 placeholder:text-slate-400 focus:ring-2 focus:ring-primary-500 text-sm sm:text-base"
+            />
+          </div>
+
+          {/* Quick Tools Links */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+            <span className="text-sm font-medium text-slate-300">Popular:</span>
             {QUICK_TOOLS.map((tool) => (
               <Link
                 key={tool.slug}
                 to={`/tools/${tool.slug}`}
-                className="rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-sm font-semibold text-navy-800 shadow-sm transition-colors hover:border-primary-300 hover:text-primary-700"
+                className="rounded-full border border-slate-700 bg-navy-800/80 px-3.5 py-1.5 text-sm font-semibold text-slate-200 shadow-sm transition-colors hover:border-primary-400 hover:text-white"
               >
                 {tool.name}
               </Link>
             ))}
           </div>
 
+          {/* Trust Points */}
           <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
             {TRUST_POINTS.map((point) => {
               const Icon = point.icon;
               return (
-                <li key={point.label} className="flex items-center gap-2 text-sm font-medium text-navy-700">
-                  <Icon className="h-4 w-4 text-primary-600" aria-hidden="true" />
+                <li key={point.label} className="flex items-center gap-2 text-sm font-medium text-slate-300">
+                  <Icon className="h-4 w-4 text-primary-400" aria-hidden="true" />
                   {point.label}
                 </li>
               );
@@ -24,6 +79,7 @@
         </div>
       </section>
 
+      {/* Categories Section */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" aria-labelledby="categories-heading">
         <div>
           <h2 id="categories-heading" className="text-2xl font-bold text-navy-900 sm:text-3xl">
@@ -58,7 +114,8 @@
         </ul>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50" aria-labelledby="about-habari-heading">
+      {/* About Section */}
+      <section className="border-y border-slate-200 bg-slate-100" aria-labelledby="about-habari-heading">
         <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
           <h2 id="about-habari-heading" className="text-2xl font-bold text-navy-900 sm:text-3xl">
             Welcome to HABARI – Free Online Tools
@@ -78,7 +135,8 @@
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6" aria-labelledby="all-tools-heading">
+      {/* All Tools Section */}
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" aria-labelledby="all-tools-heading">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 id="all-tools-heading" className="text-2xl font-bold text-navy-900 sm:text-3xl">
@@ -93,7 +151,7 @@
         </div>
 
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {searchTools('').map((tool) => (
+          {searchTools(searchQuery).map((tool) => (
             <li key={tool.slug}>
               <ToolCard tool={tool} />
             </li>
@@ -101,6 +159,7 @@
         </ul>
       </section>
 
+      {/* Movies Banner Section */}
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6" aria-labelledby="movies-heading">
         <div className="flex flex-col items-start justify-between gap-6 rounded-2xl bg-navy-900 p-8 text-white sm:flex-row sm:items-center sm:p-10">
           <div className="flex items-start gap-5">
@@ -126,3 +185,5 @@
         </div>
       </section>
     </div>
+  );
+}
