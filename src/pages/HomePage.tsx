@@ -1,99 +1,3 @@
-import { useState, type FormEvent } from 'react';
-import { ArrowRight, Clapperboard, Search, ShieldCheck, Sparkles, Zap } from 'lucide-react';
-import { CATEGORIES, findTool, searchTools } from '@/data/tools';
-import { Link, navigate } from '@/lib/router';
-import { useDocumentMeta } from '@/lib/useDocumentMeta';
-import { ToolCard } from '@/components/ToolCard';
-
-const TRUST_POINTS = [
-  { icon: Sparkles, label: 'Completely free' },
-  { icon: ShieldCheck, label: 'No sign-up needed' },
-  { icon: Zap, label: 'Works instantly in your browser' },
-];
-
-const QUICK_TOOL_SLUGS = ['word-counter', 'password-generator', 'loan-calculator', 'live-digital-clock', 'age-calculator'];
-
-const QUICK_TOOLS = QUICK_TOOL_SLUGS.map(findTool).filter((tool) => tool !== undefined);
-
-export function HomePage() {
-  useDocumentMeta({
-    title: 'Free Online Tools for Everyday Life',
-    description:
-      'HABARI offers free online tools for everyday life: word counter, case converter, age, loan and discount calculators, password generator, live clock and world time converter.',
-  });
-
-  const [query, setQuery] = useState('');
-  const matches = query.trim() ? searchTools(query).slice(0, 6) : [];
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (matches[0]) navigate(`/tools/${matches[0].slug}`);
-  }
-
-  return (
-    <div>
-      <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-b from-primary-50 via-white to-white">
-        <div className="pointer-events-none absolute -top-32 left-1/2 h-96 w-[60rem] -translate-x-1/2 rounded-full bg-primary-100/60 blur-3xl" aria-hidden="true" />
-        <div className="relative mx-auto max-w-4xl px-4 pb-16 pt-14 text-center sm:px-6 sm:pb-24 sm:pt-24 animate-fade-in-up">
-          <p className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-white px-4 py-1.5 text-sm font-semibold text-primary-700 shadow-sm">
-            <Sparkles className="h-4 w-4" aria-hidden="true" />
-            Ten free tools, always available
-          </p>
-          <h1 className="mt-6 text-balance text-4xl font-bold leading-tight text-navy-900 sm:text-5xl lg:text-6xl">
-            Free Online Tools for Everyday Life
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-            Count words, calculate loans, convert time zones, generate strong passwords and more. Fast, accurate and private.
-          </p>
-
-          <form role="search" onSubmit={handleSubmit} className="relative mx-auto mt-10 max-w-xl text-left">
-            <label htmlFor="tool-search" className="sr-only">
-              Search tools
-            </label>
-            <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" aria-hidden="true" />
-            <input
-              id="tool-search"
-              type="search"
-              autoComplete="off"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              onKeyDown={(event) => {
-                if (event.key === 'Escape') setQuery('');
-              }}
-              placeholder="Search tools, e.g. password or loan"
-              className="w-full rounded-xl border border-slate-300 bg-white py-4 pl-12 pr-4 text-base text-navy-900 shadow-sm transition-shadow duration-200 placeholder:text-slate-500 focus:border-primary-600 focus:outline-none focus:ring-4 focus:ring-primary-100"
-              aria-describedby="tool-search-status"
-            />
-
-            <div id="tool-search-status" aria-live="polite">
-              {query.trim() && matches.length === 0 ? (
-                <p className="mt-3 text-center text-sm text-slate-600">No tools match "{query.trim()}". Try a different word.</p>
-              ) : null}
-            </div>
-
-            {matches.length > 0 ? (
-              <ul className="absolute left-0 right-0 top-full z-20 mt-2 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg animate-fade-in-up">
-                {matches.map((tool) => {
-                  const Icon = tool.icon;
-                  return (
-                    <li key={tool.slug}>
-                      <Link to={`/tools/${tool.slug}`} className="flex items-center gap-4 px-4 py-3 transition-colors hover:bg-primary-50 focus-visible:bg-primary-50">
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-700">
-                          <Icon className="h-5 w-5" aria-hidden="true" />
-                        </span>
-                        <span className="min-w-0">
-                          <span className="block font-semibold text-navy-900">{tool.name}</span>
-                          <span className="block truncate text-sm text-slate-600">{tool.summary}</span>
-                        </span>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : null}
-          </form>
-
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
             <span className="text-sm font-medium text-slate-600">Popular:</span>
             {QUICK_TOOLS.map((tool) => (
               <Link
@@ -154,6 +58,26 @@ export function HomePage() {
         </ul>
       </section>
 
+      <section className="border-y border-slate-200 bg-slate-50" aria-labelledby="about-habari-heading">
+        <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
+          <h2 id="about-habari-heading" className="text-2xl font-bold text-navy-900 sm:text-3xl">
+            Welcome to HABARI – Free Online Tools
+          </h2>
+          <p className="mt-5 text-base leading-relaxed text-slate-600">
+            HABARI is a collection of simple and useful free online tools designed to make everyday tasks easier.
+            Whether you need to calculate numbers, edit text, manage dates and time, or generate a secure password,
+            you can find a helpful tool here.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-slate-600">
+            Our tools are designed to be easy to use, work directly in your browser, and help you save time without
+            creating an account. Explore our collection and find the right tool for your needs.
+          </p>
+          <p className="mt-4 text-sm font-semibold text-primary-700">
+            Simple. Useful. Free.
+          </p>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6" aria-labelledby="all-tools-heading">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -202,5 +126,3 @@ export function HomePage() {
         </div>
       </section>
     </div>
-  );
-}
