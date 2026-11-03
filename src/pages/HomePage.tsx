@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  Search, 
-  ArrowRight, 
-  Clapperboard, 
-  ShieldCheck, 
-  Zap, 
-  Lock 
-} from 'lucide-react';
-import ToolCard from '../components/ToolCard';
-import { CATEGORIES, QUICK_TOOLS, searchTools } from '../data/tools';
+import { useState } from 'react';
+import { ArrowRight, Clapperboard, Search, ShieldCheck, Zap, Lock } from 'lucide-react';
+import { CATEGORIES, findTool, searchTools } from '@/data/tools';
+import { Link } from '@/lib/router';
+import { useDocumentMeta } from '@/lib/useDocumentMeta';
+import { ToolCard } from '@/components/ToolCard';
 
 const TRUST_POINTS = [
   { icon: Zap, label: '100% Free & Fast' },
@@ -17,16 +11,21 @@ const TRUST_POINTS = [
   { icon: ShieldCheck, label: 'Private & Secure' },
 ];
 
-export default function HomePage() {
-  const [searchQuery, setSearchQuery] = useState('');
+const QUICK_TOOL_SLUGS = ['word-counter', 'password-generator', 'loan-calculator', 'live-digital-clock', 'age-calculator'];
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-  };
+const QUICK_TOOLS = QUICK_TOOL_SLUGS.map(findTool).filter((tool) => tool !== undefined);
+
+export function HomePage() {
+  useDocumentMeta({
+    title: 'Free Online Tools for Everyday Life',
+    description:
+      'HABARI offers free online tools for everyday life: word counter, case converter, age, loan and discount calculators, password generator, live clock and world time converter.',
+  });
+
+  const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Hero Section */}
       <section className="bg-gradient-to-b from-navy-900 via-navy-800 to-navy-900 py-20 text-white">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
@@ -36,21 +35,20 @@ export default function HomePage() {
             Fast, secure, and easy-to-use web applications for everyday calculations, text editing, and utilities.
           </p>
 
-          {/* Search Bar */}
-          <div className="relative mt-8 max-w-2xl mx-auto">
+          <div className="relative mx-auto mt-8 max-w-2xl">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
               <Search className="h-5 w-5" aria-hidden="true" />
             </div>
             <input
               type="text"
               value={searchQuery}
-              onChange={handleSearchChange}
+              onChange={(event) => setSearchQuery(event.target.value)}
               placeholder="Search for a tool (e.g., Password Generator, Word Counter)..."
-              className="w-full rounded-full border-0 bg-white py-4 pl-11 pr-4 text-navy-900 shadow-lg ring-1 ring-slate-200 placeholder:text-slate-400 focus:ring-2 focus:ring-primary-500 text-sm sm:text-base"
+              aria-label="Search tools"
+              className="w-full rounded-full border-0 bg-white py-4 pl-11 pr-4 text-sm text-navy-900 shadow-lg ring-1 ring-slate-200 placeholder:text-slate-400 focus:ring-2 focus:ring-primary-500 sm:text-base"
             />
           </div>
 
-          {/* Quick Tools Links */}
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
             <span className="text-sm font-medium text-slate-300">Popular:</span>
             {QUICK_TOOLS.map((tool) => (
@@ -64,7 +62,6 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Trust Points */}
           <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
             {TRUST_POINTS.map((point) => {
               const Icon = point.icon;
@@ -79,7 +76,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Categories Section */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" aria-labelledby="categories-heading">
         <div>
           <h2 id="categories-heading" className="text-2xl font-bold text-navy-900 sm:text-3xl">
@@ -114,7 +110,6 @@ export default function HomePage() {
         </ul>
       </section>
 
-      {/* About Section */}
       <section className="border-y border-slate-200 bg-slate-100" aria-labelledby="about-habari-heading">
         <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
           <h2 id="about-habari-heading" className="text-2xl font-bold text-navy-900 sm:text-3xl">
@@ -129,13 +124,10 @@ export default function HomePage() {
             Our tools are designed to be easy to use, work directly in your browser, and help you save time without
             creating an account. Explore our collection and find the right tool for your needs.
           </p>
-          <p className="mt-4 text-sm font-semibold text-primary-700">
-            Simple. Useful. Free.
-          </p>
+          <p className="mt-4 text-sm font-semibold text-primary-700">Simple. Useful. Free.</p>
         </div>
       </section>
 
-      {/* All Tools Section */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6" aria-labelledby="all-tools-heading">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -159,7 +151,6 @@ export default function HomePage() {
         </ul>
       </section>
 
-      {/* Movies Banner Section */}
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6" aria-labelledby="movies-heading">
         <div className="flex flex-col items-start justify-between gap-6 rounded-2xl bg-navy-900 p-8 text-white sm:flex-row sm:items-center sm:p-10">
           <div className="flex items-start gap-5">
