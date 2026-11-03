@@ -28,8 +28,8 @@ export const MOVIE_SITES: MovieSite[] = [
   },
   {
     name: 'Crackle',
-    url: 'https://www.crackle.com',
-    description: 'Sony-backed streaming service with a rotating selection of full-length movies and TV shows at no charge.',
+    url: 'https://crackle.works',
+    description: 'An online entertainment service that helps viewers discover free HD movies and TV shows across a variety of genres.',
     access: 'Ad-supported',
   },
   {
