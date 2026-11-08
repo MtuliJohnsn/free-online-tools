@@ -65,8 +65,8 @@ export function Footer() {
       </div>
 
       <div className="border-t border-slate-200">
-        <p className="mx-auto max-w-6xl px-4 py-6 text-sm text-slate-600 sm:px-6">
-          &copy; {new Date().getFullYear()} HABARI. All rights reserved.
+        <p className="mx-auto max-w-6xl px-4 py-6 text-center text-sm text-slate-600 sm:px-6">
+          &copy; 2026 HABARI. All rights reserved.
         </p>
       </div>
     </footer>
