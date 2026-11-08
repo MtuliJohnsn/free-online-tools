@@ -3,6 +3,7 @@ import { CATEGORIES, categoryName, searchTools, type ToolDefinition } from '@/da
 import { Link } from '@/lib/router';
 import { useDocumentMeta } from '@/lib/useDocumentMeta';
 import { ToolCard } from '@/components/ToolCard';
+import { AdSlot } from '@/components/AdSlot';
 
 interface ToolPageProps {
   tool: ToolDefinition;
@@ -63,6 +64,8 @@ export function ToolPage({ tool }: ToolPageProps) {
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 animate-fade-in-up">
           <Tool />
         </div>
+
+        <AdSlot className="mt-12" />
 
         {related.length > 0 ? (
           <div className="mt-16">

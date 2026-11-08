@@ -2,6 +2,7 @@ import { ExternalLink, Film } from 'lucide-react';
 import { MOVIE_SITES, type MovieSiteAccess } from '@/data/movieSites';
 import { useDocumentMeta } from '@/lib/useDocumentMeta';
 import { PageHeader } from '@/components/PageHeader';
+import { AdSlot } from '@/components/AdSlot';
 
 const ACCESS_STYLES: Record<MovieSiteAccess, string> = {
   'Free to watch': 'bg-success-50 text-success-700',
@@ -53,6 +54,8 @@ export function FreeMoviesPage() {
           HABARI does not host or stream these movies. We only link to the official websites of the services listed. Please check each
           site's terms before you sign up.
         </p>
+
+        <AdSlot className="mt-12" />
       </section>
     </div>
   );

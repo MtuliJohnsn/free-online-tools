@@ -1,9 +1,9 @@
 import type { ComponentType } from 'react';
 import { lazy } from 'react';
-import { Briefcase, CalendarClock, Cake, CaseSensitive, Calculator, Clock, FileText, Globe, KeyRound, Landmark, Percent, Dices, Tag, Type } from 'lucide-react';
+import { Briefcase, CalendarClock, Cake, CaseSensitive, Calculator, Clock, FileText, Globe, KeyRound, Landmark, Percent, Dices, Tag, Type, Code2, Binary, Fingerprint, Link2, Regex, FileJson, GitCompare, Timer, Palette, FileCode } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
-export type CategoryId = 'calculators' | 'text' | 'datetime' | 'productivity';
+export type CategoryId = 'calculators' | 'text' | 'datetime' | 'productivity' | 'developer';
 
 export interface ToolCategory {
   id: CategoryId;
@@ -28,6 +28,7 @@ export const CATEGORIES: ToolCategory[] = [
   { id: 'text', name: 'Text Tools', description: 'Count, format and transform your writing', icon: Type },
   { id: 'datetime', name: 'Date & Time', description: 'Live clocks and world time conversion', icon: CalendarClock },
   { id: 'productivity', name: 'Productivity', description: 'Generators for numbers and passwords', icon: Briefcase },
+  { id: 'developer', name: 'Developer Tools', description: 'JSON, Base64, regex, UUIDs and more code utilities', icon: Code2 },
 ];
 
 const TOOLS: ToolDefinition[] = [
@@ -39,7 +40,7 @@ const TOOLS: ToolDefinition[] = [
     category: 'text',
     icon: FileText,
     keywords: ['words', 'characters', 'count', 'essay', 'reading time'],
-    component: lazy(() => import('@/tools/WordCounter').then((m) => ({ default: m.WordCounter }))),
+    component: lazy(() => import('@/pages/tools/WordCounter').then((m) => ({ default: m.WordCounter }))),
   },
   {
     slug: 'case-converter',
@@ -49,7 +50,7 @@ const TOOLS: ToolDefinition[] = [
     category: 'text',
     icon: CaseSensitive,
     keywords: ['uppercase', 'lowercase', 'title case', 'camelcase', 'snake case', 'capitalize'],
-    component: lazy(() => import('@/tools/CaseConverter').then((m) => ({ default: m.CaseConverter }))),
+    component: lazy(() => import('@/pages/tools/CaseConverter').then((m) => ({ default: m.CaseConverter }))),
   },
   {
     slug: 'age-calculator',
@@ -59,7 +60,7 @@ const TOOLS: ToolDefinition[] = [
     category: 'calculators',
     icon: Cake,
     keywords: ['age', 'birthday', 'date of birth', 'years old'],
-    component: lazy(() => import('@/tools/AgeCalculator').then((m) => ({ default: m.AgeCalculator }))),
+    component: lazy(() => import('@/pages/tools/AgeCalculator').then((m) => ({ default: m.AgeCalculator }))),
   },
   {
     slug: 'percentage-calculator',
@@ -69,7 +70,7 @@ const TOOLS: ToolDefinition[] = [
     category: 'calculators',
     icon: Percent,
     keywords: ['percent', 'percentage', 'percentage change', 'ratio'],
-    component: lazy(() => import('@/tools/PercentageCalculator').then((m) => ({ default: m.PercentageCalculator }))),
+    component: lazy(() => import('@/pages/tools/PercentageCalculator').then((m) => ({ default: m.PercentageCalculator }))),
   },
   {
     slug: 'random-number-generator',
@@ -79,7 +80,7 @@ const TOOLS: ToolDefinition[] = [
     category: 'productivity',
     icon: Dices,
     keywords: ['random', 'number', 'dice', 'lottery', 'draw'],
-    component: lazy(() => import('@/tools/RandomNumberGenerator').then((m) => ({ default: m.RandomNumberGenerator }))),
+    component: lazy(() => import('@/pages/tools/RandomNumberGenerator').then((m) => ({ default: m.RandomNumberGenerator }))),
   },
   {
     slug: 'live-digital-clock',
@@ -89,7 +90,7 @@ const TOOLS: ToolDefinition[] = [
     category: 'datetime',
     icon: Clock,
     keywords: ['clock', 'time', 'digital', 'now', 'live'],
-    component: lazy(() => import('@/tools/LiveClock').then((m) => ({ default: m.LiveClock }))),
+    component: lazy(() => import('@/pages/tools/LiveClock').then((m) => ({ default: m.LiveClock }))),
   },
   {
     slug: 'world-time-converter',
@@ -99,7 +100,7 @@ const TOOLS: ToolDefinition[] = [
     category: 'datetime',
     icon: Globe,
     keywords: ['time zone', 'world clock', 'convert time', 'timezone', 'city time'],
-    component: lazy(() => import('@/tools/WorldTimeConverter').then((m) => ({ default: m.WorldTimeConverter }))),
+    component: lazy(() => import('@/pages/tools/WorldTimeConverter').then((m) => ({ default: m.WorldTimeConverter }))),
   },
   {
     slug: 'loan-calculator',
@@ -109,7 +110,7 @@ const TOOLS: ToolDefinition[] = [
     category: 'calculators',
     icon: Landmark,
     keywords: ['loan', 'mortgage', 'interest', 'repayment', 'emi', 'monthly payment'],
-    component: lazy(() => import('@/tools/LoanCalculator').then((m) => ({ default: m.LoanCalculator }))),
+    component: lazy(() => import('@/pages/tools/LoanCalculator').then((m) => ({ default: m.LoanCalculator }))),
   },
   {
     slug: 'discount-calculator',
@@ -119,7 +120,7 @@ const TOOLS: ToolDefinition[] = [
     category: 'calculators',
     icon: Tag,
     keywords: ['discount', 'sale', 'savings', 'price', 'tax', 'off'],
-    component: lazy(() => import('@/tools/DiscountCalculator').then((m) => ({ default: m.DiscountCalculator }))),
+    component: lazy(() => import('@/pages/tools/DiscountCalculator').then((m) => ({ default: m.DiscountCalculator }))),
   },
   {
     slug: 'password-generator',
@@ -129,7 +130,107 @@ const TOOLS: ToolDefinition[] = [
     category: 'productivity',
     icon: KeyRound,
     keywords: ['password', 'secure', 'random', 'strong password', 'security'],
-    component: lazy(() => import('@/tools/PasswordGenerator').then((m) => ({ default: m.PasswordGenerator }))),
+    component: lazy(() => import('@/pages/tools/PasswordGenerator').then((m) => ({ default: m.PasswordGenerator }))),
+  },
+  {
+    slug: 'json-formatter',
+    name: 'JSON Formatter & Validator',
+    summary: 'Format, minify and validate JSON with clear syntax error messages.',
+    description: 'Free JSON formatter and validator. Beautify or minify JSON and spot syntax errors instantly.',
+    category: 'developer',
+    icon: FileJson,
+    keywords: ['json', 'format', 'minify', 'validate', 'beautify', 'pretty print'],
+    component: lazy(() => import('@/pages/tools/JsonFormatter').then((m) => ({ default: m.JsonFormatter }))),
+  },
+  {
+    slug: 'base64-encoder-decoder',
+    name: 'Base64 Encoder & Decoder',
+    summary: 'Encode text to Base64 and decode Base64 back to readable text.',
+    description: 'Free Base64 encoder and decoder. Convert text to Base64 and back, with clear error handling for invalid input.',
+    category: 'developer',
+    icon: Binary,
+    keywords: ['base64', 'encode', 'decode', 'atob', 'btoa'],
+    component: lazy(() => import('@/pages/tools/Base64Encoder').then((m) => ({ default: m.Base64Encoder }))),
+  },
+  {
+    slug: 'uuid-generator',
+    name: 'UUID Generator',
+    summary: 'Generate version 4 UUIDs instantly, with copy buttons for each.',
+    description: 'Free UUID generator. Create one or many version 4 UUIDs in your browser with secure random values.',
+    category: 'developer',
+    icon: Fingerprint,
+    keywords: ['uuid', 'guid', 'v4', 'identifier', 'unique id'],
+    component: lazy(() => import('@/pages/tools/UuidGenerator').then((m) => ({ default: m.UuidGenerator }))),
+  },
+  {
+    slug: 'url-encoder-decoder',
+    name: 'URL Encoder & Decoder',
+    summary: 'Encode and decode URL components safely for query strings.',
+    description: 'Free URL encoder and decoder. Safely percent-encode special characters or decode URL-encoded strings.',
+    category: 'developer',
+    icon: Link2,
+    keywords: ['url', 'encode', 'decode', 'percent', 'uri', 'query string'],
+    component: lazy(() => import('@/pages/tools/UrlEncoder').then((m) => ({ default: m.UrlEncoder }))),
+  },
+  {
+    slug: 'regex-tester',
+    name: 'Regex Tester',
+    summary: 'Test regular expressions against text and see all matches with groups.',
+    description: 'Free regex tester. Enter a pattern and test text, see matches, capture groups and errors in real time.',
+    category: 'developer',
+    icon: Regex,
+    keywords: ['regex', 'regular expression', 'pattern', 'match', 'test'],
+    component: lazy(() => import('@/pages/tools/RegexTester').then((m) => ({ default: m.RegexTester }))),
+  },
+  {
+    slug: 'yaml-to-json-converter',
+    name: 'YAML to JSON Converter',
+    summary: 'Convert valid YAML into formatted JSON quickly and accurately.',
+    description: 'Free YAML to JSON converter. Paste YAML and get clean, formatted JSON output instantly.',
+    category: 'developer',
+    icon: FileCode,
+    keywords: ['yaml', 'json', 'convert', 'yml', 'configuration'],
+    component: lazy(() => import('@/pages/tools/YamlToJsonConverter').then((m) => ({ default: m.YamlToJsonConverter }))),
+  },
+  {
+    slug: 'text-diff-checker',
+    name: 'Text Diff Checker',
+    summary: 'Compare two text inputs and highlight added, removed and matching lines.',
+    description: 'Free text diff checker. Paste original and changed text to see a line-by-line comparison with additions and removals.',
+    category: 'developer',
+    icon: GitCompare,
+    keywords: ['diff', 'compare', 'text', 'changes', 'difference'],
+    component: lazy(() => import('@/pages/tools/TextDiffChecker').then((m) => ({ default: m.TextDiffChecker }))),
+  },
+  {
+    slug: 'unix-timestamp-converter',
+    name: 'Unix Timestamp Converter',
+    summary: 'Convert Unix timestamps to readable dates and dates to timestamps.',
+    description: 'Free Unix timestamp converter. Switch between timestamps and human-readable dates, with seconds and milliseconds support.',
+    category: 'developer',
+    icon: Timer,
+    keywords: ['unix', 'timestamp', 'epoch', 'date', 'converter'],
+    component: lazy(() => import('@/pages/tools/UnixTimestampConverter').then((m) => ({ default: m.UnixTimestampConverter }))),
+  },
+  {
+    slug: 'color-converter',
+    name: 'Color Converter',
+    summary: 'Convert between HEX, RGB and HSL with a live color preview.',
+    description: 'Free color converter. Switch between HEX, RGB and HSL color values with a live preview and copy buttons.',
+    category: 'developer',
+    icon: Palette,
+    keywords: ['color', 'hex', 'rgb', 'hsl', 'converter', 'css color'],
+    component: lazy(() => import('@/pages/tools/ColorConverter').then((m) => ({ default: m.ColorConverter }))),
+  },
+  {
+    slug: 'html-entity-encoder-decoder',
+    name: 'HTML Entity Encoder & Decoder',
+    summary: 'Encode special HTML characters and decode HTML entities safely.',
+    description: 'Free HTML entity encoder and decoder. Escape characters like <, >, & and decode entities back to text.',
+    category: 'developer',
+    icon: FileText,
+    keywords: ['html', 'entity', 'encode', 'decode', 'escape', 'unescape'],
+    component: lazy(() => import('@/pages/tools/HtmlEntityEncoder').then((m) => ({ default: m.HtmlEntityEncoder }))),
   },
 ];
 
