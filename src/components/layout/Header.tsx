@@ -6,6 +6,7 @@ import { Logo } from '@/components/layout/Logo';
 const NAV_ITEMS = [
   { to: '/', label: 'Home' },
   { to: '/tools', label: 'All Tools' },
+  { to: '/ai-tools', label: 'AI Tools' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
