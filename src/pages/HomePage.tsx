@@ -26,17 +26,17 @@ export function HomePage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <section className="bg-gradient-to-b from-navy-900 via-navy-800 to-navy-900 py-20 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#180d2d] via-[#29113f] to-[#4a174c] py-20 text-white">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
             Simple, Useful Free Online Tools
           </h1>
-          <p className="mt-4 text-lg text-slate-300 sm:text-xl">
+          <p className="mt-4 text-lg text-violet-100/85 sm:text-xl">
             Fast, secure, and easy-to-use web applications for everyday calculations, text editing, and utilities.
           </p>
 
           <div className="relative mx-auto mt-8 max-w-2xl">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-violet-200/70">
               <Search className="h-5 w-5" aria-hidden="true" />
             </div>
             <input
@@ -50,12 +50,12 @@ export function HomePage() {
           </div>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-            <span className="text-sm font-medium text-slate-300">Popular:</span>
+            <span className="text-sm font-medium text-violet-200">Popular:</span>
             {QUICK_TOOLS.map((tool) => (
               <Link
                 key={tool.slug}
                 to={`/tools/${tool.slug}`}
-                className="rounded-full border border-slate-700 bg-navy-800/80 px-3.5 py-1.5 text-sm font-semibold text-slate-200 shadow-sm transition-colors hover:border-primary-400 hover:text-white"
+                className="rounded-full border border-white/20 bg-white/10 backdrop-blur px-3.5 py-1.5 text-sm font-semibold text-violet-100 shadow-sm transition-colors hover:border-fuchsia-300 hover:bg-fuchsia-500/20 hover:text-white"
               >
                 {tool.name}
               </Link>
@@ -67,7 +67,7 @@ export function HomePage() {
               const Icon = point.icon;
               return (
                 <li key={point.label} className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                  <Icon className="h-4 w-4 text-primary-400" aria-hidden="true" />
+                  <Icon className="h-4 w-4 text-fuchsia-300" aria-hidden="true" />
                   {point.label}
                 </li>
               );
@@ -92,9 +92,9 @@ export function HomePage() {
               <li key={category.id}>
                 <Link
                   to={`/tools?category=${category.id}`}
-                  className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-md"
+                  className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-fuchsia-200 hover:shadow-xl hover:shadow-fuchsia-950/10"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-600 text-white">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-fuchsia-500 to-violet-600 text-white">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <span className="mt-5 text-lg font-bold text-navy-900">{category.name}</span>
