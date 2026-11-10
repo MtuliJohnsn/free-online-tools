@@ -77,25 +77,25 @@ export function AIToolsPage() {
   }, [category, query]);
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <section className="relative isolate overflow-hidden bg-[#10172d] text-white">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(99,102,241,0.42),transparent_34%),radial-gradient(circle_at_85%_70%,rgba(14,165,233,0.28),transparent_32%)]" />
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.2fr_0.8fr] md:items-center md:py-24">
+    <div className="min-h-screen bg-[#f5f6ff]">
+      <section className="relative isolate overflow-hidden bg-[#090d20] text-white">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_12%_18%,rgba(124,58,237,0.55),transparent_38%),radial-gradient(ellipse_at_88%_75%,rgba(6,182,212,0.34),transparent_35%),radial-gradient(ellipse_at_50%_110%,rgba(236,72,153,0.18),transparent_45%)]" />
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 md:grid-cols-[1.2fr_0.8fr] md:items-center md:py-28">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-indigo-100">
-              <Sparkles className="h-4 w-4" /> HABARI AI DIRECTORY
+              <Sparkles className="h-4 w-4" /> THE HABARI AI EDITION
             </span>
             <h1 className="mt-6 max-w-2xl text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-              Find the right AI tool for <span className="bg-gradient-to-r from-cyan-300 to-violet-300 bg-clip-text text-transparent">what you want to do.</span>
+              Your next great idea starts <span className="bg-gradient-to-r from-fuchsia-300 via-violet-300 to-cyan-200 bg-clip-text text-transparent">with the right AI.</span>
             </h1>
             <p className="mt-5 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
-              Explore useful AI websites for work, creativity, learning and everyday life. Pick a category, compare what each tool does, and visit its official website.
+              A handpicked collection of brilliant AI tools to help you create, discover, work smarter and bring your ideas to life. Find your next favourite tool.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#browse-ai-tools" className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 font-bold text-slate-950 shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-cyan-100">
+              <a href="#browse-ai-tools" className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-500 via-violet-500 to-indigo-500 px-5 py-3 font-bold text-white shadow-xl shadow-violet-950/40 transition hover:-translate-y-0.5 hover:brightness-110">
                 Explore AI tools <ArrowUpRight className="h-4 w-4" />
               </a>
-              <span className="inline-flex items-center rounded-xl border border-white/20 px-4 py-3 text-sm font-medium text-slate-200">
+              <span className="inline-flex items-center rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-sm font-semibold text-slate-200 backdrop-blur">
                 {TOOLS.length} hand-picked tools
               </span>
             </div>
@@ -107,7 +107,7 @@ export function AIToolsPage() {
               { icon: Video, label: 'Make videos', color: 'from-cyan-500/30 to-blue-500/10' },
               { icon: Code2, label: 'Build & code', color: 'from-emerald-500/30 to-teal-500/10' },
             ].map(({ icon: Icon, label, color }) => (
-              <div key={label} className={`flex min-h-32 flex-col justify-between rounded-2xl border border-white/10 bg-gradient-to-br ${color} p-5 shadow-xl shadow-black/10 backdrop-blur`}>
+              <div key={label} className={`flex min-h-32 flex-col justify-between rounded-3xl border border-white/15 bg-gradient-to-br ${color} p-5 shadow-2xl shadow-black/20 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-white/30`}>
                 <Icon className="h-7 w-7 text-white" />
                 <span className="font-semibold text-white">{label}</span>
               </div>
@@ -116,14 +116,14 @@ export function AIToolsPage() {
         </div>
       </section>
 
-      <section id="browse-ai-tools" className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
+      <section id="browse-ai-tools" className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.16em] text-primary-700">Explore & discover</p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">Browse AI tools</h2>
-            <p className="mt-2 max-w-2xl text-slate-600">Find a tool by the task you need help with. Start with free options and check each provider for current limits.</p>
+            <h2 className="mt-2 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Find your AI match</h2>
+            <p className="mt-2 max-w-2xl text-slate-600">Search the collection or explore a category. Each listing tells you what the tool does and where to try it.</p>
           </div>
-          <div className="inline-flex items-center gap-2 self-start rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm ring-1 ring-slate-200 sm:self-auto">
+          <div className="inline-flex items-center gap-2 self-start rounded-full bg-white px-4 py-2 text-sm font-bold text-violet-700 shadow-md shadow-violet-100 ring-1 ring-violet-100 sm:self-auto">
             <WandSparkles className="h-4 w-4 text-violet-600" /> Curated directory
           </div>
         </div>
@@ -132,7 +132,7 @@ export function AIToolsPage() {
           <label htmlFor="ai-tool-search" className="sr-only">Search AI tools</label>
           <div className="relative">
             <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
-            <input id="ai-tool-search" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search ChatGPT, images, writing, coding..." className="w-full rounded-2xl border border-slate-200 bg-white py-4 pl-12 pr-4 text-base text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-primary-400 focus:ring-4 focus:ring-primary-100" />
+            <input id="ai-tool-search" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search ChatGPT, images, writing, coding..." className="w-full rounded-2xl border border-violet-100 bg-white py-4 pl-12 pr-4 text-base text-slate-900 shadow-lg shadow-violet-100/60 outline-none transition placeholder:text-slate-400 focus:border-violet-400 focus:ring-4 focus:ring-violet-100" />
           </div>
         </div>
 
@@ -152,24 +152,25 @@ export function AIToolsPage() {
         {filtered.length ? (
           <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((tool) => (
-              <article key={tool.name} className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-xl hover:shadow-slate-200/70">
+              <article key={tool.name} className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-violet-100 bg-white p-6 shadow-lg shadow-indigo-100/50 transition duration-300 hover:-translate-y-2 hover:border-violet-300 hover:shadow-2xl hover:shadow-violet-200/70">
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400" />
                 <div className="flex items-start justify-between gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-100 to-cyan-100 text-primary-800">
-                    <Sparkles className="h-6 w-6" />
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-fuchsia-100 via-violet-100 to-cyan-100 text-violet-800 shadow-inner">
+                    <span className="text-2xl font-black">{tool.name.slice(0, 1)}</span>
                   </div>
                   {tool.featured && <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-700"><Star className="h-3 w-3 fill-current" /> Popular pick</span>}
                 </div>
                 <p className="mt-5 text-xs font-bold uppercase tracking-wider text-primary-700">{tool.category}</p>
                 <h3 className="mt-2 text-xl font-extrabold text-slate-950">{tool.name}</h3>
                 <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">{tool.description}</p>
-                <div className="mt-5 rounded-xl bg-slate-50 p-3">
+                <div className="mt-5 rounded-2xl bg-gradient-to-r from-violet-50 to-cyan-50 p-3.5">
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Best for</p>
                   <p className="mt-1 text-sm font-bold text-slate-800">{tool.bestFor}</p>
                 </div>
                 <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-emerald-700">
                   <Check className="h-4 w-4" /> {tool.access}
                 </div>
-                <a href={tool.url} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-950 px-4 py-3 text-sm font-bold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-200">
+                <a href={tool.url} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-slate-950 to-violet-950 px-4 py-3 text-sm font-bold text-white shadow-md shadow-violet-200/60 transition hover:from-violet-700 hover:to-indigo-700 focus:outline-none focus:ring-4 focus:ring-violet-200">
                   Visit official website <ArrowUpRight className="h-4 w-4" />
                 </a>
               </article>
@@ -189,7 +190,7 @@ export function AIToolsPage() {
           <div className="rounded-2xl bg-slate-950 px-6 py-7 text-white sm:px-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h2 className="text-xl font-extrabold">A quick note about free plans</h2>
+                <h2 className="text-xl font-extrabold">Explore smarter. Create more.</h2>
                 <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">Many AI websites offer free access with limits on messages, credits or features. Availability and pricing can change, so always check the provider’s official page before signing up or paying.</p>
               </div>
               <span className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-cyan-200"><Check className="h-4 w-4" /> Official links only</span>
