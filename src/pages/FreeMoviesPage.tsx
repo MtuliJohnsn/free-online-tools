@@ -24,6 +24,15 @@ const CARD_ACCENTS = [
   'from-emerald-950 via-slate-900 to-teal-950',
 ];
 
+const FEATURED_MOVIES = [
+  { title: 'The Shawshank Redemption', year: '1994', poster: 'https://image.tmdb.org/t/p/w342/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg' },
+  { title: 'Inception', year: '2010', poster: 'https://image.tmdb.org/t/p/w342/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg' },
+  { title: 'Interstellar', year: '2014', poster: 'https://image.tmdb.org/t/p/w342/7WsyChQLEftFiDhRDpZFHSPwJJA.jpg' },
+  { title: 'Fight Club', year: '1999', poster: 'https://image.tmdb.org/t/p/w342/jSziioSwPVrOy9Yow3XhWIBDjq1.jpg' },
+  { title: 'Dune', year: '2021', poster: 'https://image.tmdb.org/t/p/w342/d5NXSklXo0qyIYkgV94XAgMIckC.jpg' },
+  { title: 'The Lord of the Rings', year: '2001', poster: 'https://image.tmdb.org/t/p/w342/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg' },
+];
+
 export function FreeMoviesPage() {
   const [search, setSearch] = useState('');
   const [activeFilter, setActiveFilter] = useState<Filter>('All services');
@@ -88,6 +97,39 @@ export function FreeMoviesPage() {
               Curated links to official platforms
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-900">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">Movie inspiration</p>
+              <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">Popular movies to discover</h2>
+            </div>
+            <p className="text-sm text-slate-400">A little inspiration for your next movie night</p>
+          </div>
+          <ul className="mt-7 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
+            {FEATURED_MOVIES.map((movie) => (
+              <li key={movie.title} className="group">
+                <div className="overflow-hidden rounded-xl bg-slate-800 shadow-lg ring-1 ring-white/10">
+                  <img
+                    src={movie.poster}
+                    alt={`${movie.title} movie poster`}
+                    width="342"
+                    height="513"
+                    loading="lazy"
+                    className="aspect-[2/3] w-full object-cover transition duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <h3 className="mt-3 text-sm font-semibold leading-snug text-white">{movie.title}</h3>
+                <p className="mt-1 text-xs text-slate-400">{movie.year}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 text-xs text-slate-400">
+            Movie poster images are provided by The Movie Database (TMDB). HABARI is not endorsed or certified by TMDB.
+          </p>
         </div>
       </section>
 
