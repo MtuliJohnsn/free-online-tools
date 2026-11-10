@@ -25,12 +25,12 @@ const CARD_ACCENTS = [
 ];
 
 const FEATURED_MOVIES = [
-  { title: 'The Shawshank Redemption', year: '1994', poster: 'https://image.tmdb.org/t/p/w342/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg' },
-  { title: 'Inception', year: '2010', poster: 'https://image.tmdb.org/t/p/w342/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg' },
-  { title: 'Interstellar', year: '2014', poster: 'https://image.tmdb.org/t/p/w342/7WsyChQLEftFiDhRDpZFHSPwJJA.jpg' },
-  { title: 'Fight Club', year: '1999', poster: 'https://image.tmdb.org/t/p/w342/jSziioSwPVrOy9Yow3XhWIBDjq1.jpg' },
-  { title: 'Dune', year: '2021', poster: 'https://image.tmdb.org/t/p/w342/d5NXSklXo0qyIYkgV94XAgMIckC.jpg' },
-  { title: 'The Lord of the Rings', year: '2001', poster: 'https://image.tmdb.org/t/p/w342/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg' },
+  { title: 'The Dark Knight', year: '2008', poster: 'https://image.tmdb.org/t/p/w342/qJ2tW6WMUDux911r6m7haRef0WH.jpg' },
+  { title: 'Pulp Fiction', year: '1994', poster: 'https://image.tmdb.org/t/p/w342/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg' },
+  { title: 'The Matrix', year: '1999', poster: 'https://image.tmdb.org/t/p/w342/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg' },
+  { title: 'Gladiator', year: '2000', poster: 'https://image.tmdb.org/t/p/w342/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg' },
+  { title: 'Parasite', year: '2019', poster: 'https://image.tmdb.org/t/p/w342/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg' },
+  { title: 'The Godfather', year: '1972', poster: 'https://image.tmdb.org/t/p/w342/3bhkrj58Vtu7enYsRolD1fZdja1.jpg' },
 ];
 
 export function FreeMoviesPage() {
@@ -105,9 +105,9 @@ export function FreeMoviesPage() {
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">Movie inspiration</p>
-              <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">Popular movies to discover</h2>
+              <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">Fresh movie picks</h2>
             </div>
-            <p className="text-sm text-slate-400">A little inspiration for your next movie night</p>
+            <p className="text-sm text-slate-400">Six hand-picked classics for your next movie night</p>
           </div>
           <ul className="mt-7 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
             {FEATURED_MOVIES.map((movie) => (
