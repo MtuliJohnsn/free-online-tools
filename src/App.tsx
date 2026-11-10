@@ -5,6 +5,7 @@ import { useLocation } from '@/lib/router';
 import { HomePage } from '@/pages/HomePage';
 
 const AboutPage = lazy(() => import('@/pages/AboutPage').then((m) => ({ default: m.AboutPage })));
+const AIToolsPage = lazy(() => import('@/pages/AIToolsPage').then((m) => ({ default: m.AIToolsPage })));
 const AllToolsPage = lazy(() => import('@/pages/AllToolsPage').then((m) => ({ default: m.AllToolsPage })));
 const ContactPage = lazy(() => import('@/pages/ContactPage').then((m) => ({ default: m.ContactPage })));
 const FreeMoviesPage = lazy(() => import('@/pages/FreeMoviesPage').then((m) => ({ default: m.FreeMoviesPage })));
@@ -26,6 +27,8 @@ function renderRoute(pathname: string) {
     switch (segments[0]) {
       case 'about':
         return <AboutPage />;
+      case 'ai-tools':
+        return <AIToolsPage />;
       case 'contact':
         return <ContactPage />;
       case 'free-movies':
