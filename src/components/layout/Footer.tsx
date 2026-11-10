@@ -4,6 +4,7 @@ import { Logo } from '@/components/layout/Logo';
 
 const COMPANY_LINKS = [
   { to: '/about', label: 'About Us' },
+  { to: '/ai-tools', label: 'AI Tools Directory' },
   { to: '/contact', label: 'Contact Us' },
   { to: '/free-movies', label: 'Free Movie Sites' },
 ];
