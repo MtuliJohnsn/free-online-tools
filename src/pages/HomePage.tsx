@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ArrowRight, Clapperboard, Search, ShieldCheck, Zap, Lock, Sparkles } from 'lucide-react';
-import { CATEGORIES, findTool, searchTools } from '@/data/tools';
+import { CATEGORIES, findTool, searchTools, type CategoryId } from '@/data/tools';
 import { Link } from '@/lib/router';
 import { useDocumentMeta } from '@/lib/useDocumentMeta';
 
@@ -20,7 +20,7 @@ export function HomePage() {
   });
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState<'all' | CategoryId>('all');
   const visibleTools = searchTools(searchQuery, selectedCategory === 'all' ? undefined : selectedCategory);
 
   return (
