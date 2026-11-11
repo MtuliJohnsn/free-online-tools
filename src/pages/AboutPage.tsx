@@ -65,7 +65,7 @@ export function AboutPage() {
         <div className="mt-16 flex flex-col items-start justify-between gap-6 rounded-2xl bg-navy-900 p-8 text-white sm:flex-row sm:items-center sm:p-10">
           <div>
             <h2 className="text-2xl font-bold">Ready to get started?</h2>
-            <p className="mt-2 text-primary-50">Explore all ten free tools, or tell us what you would like us to build next.</p>
+            <p className="mt-2 text-primary-50">Explore our free online tools, or tell us what you would like us to build next.</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Link to="/tools" className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-navy-900 transition-colors hover:bg-primary-50">
