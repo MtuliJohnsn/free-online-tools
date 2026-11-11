@@ -27,12 +27,6 @@ export const MOVIE_SITES: MovieSite[] = [
     access: 'Ad-supported',
   },
   {
-    name: 'Crackle',
-    url: 'https://crackle.works',
-    description: 'An online entertainment service that helps viewers discover free HD movies and TV shows across a variety of genres.',
-    access: 'Ad-supported',
-  },
-  {
     name: 'YouTube Free Movies',
     url: 'https://www.youtube.com',
     description: 'YouTube offers a free movies section with licensed films, available on any device with a Google account.',
