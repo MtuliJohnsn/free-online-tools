@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { ArrowUpRight, Clapperboard, Film, Search, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Clapperboard, ExternalLink, Film, Search, ShieldCheck, Sparkles } from 'lucide-react';
 import { MOVIE_SITES, type MovieSiteAccess } from '@/data/movieSites';
 import { useDocumentMeta } from '@/lib/useDocumentMeta';
 import { PageHeader } from '@/components/PageHeader';
@@ -38,8 +38,8 @@ export function FreeMoviesPage() {
   const [activeFilter, setActiveFilter] = useState<Filter>('All services');
 
   useDocumentMeta({
-    title: 'Free Movies Online – Compare Free Streaming Services | HABARI',
-    description: 'Compare free movie and TV streaming services, understand ads and account requirements, and find official platforms to explore. Availability varies by country.',
+    title: 'Free Movies Online – Legal Streaming Sites',
+    description: 'Discover trusted places to watch free movies online legally. Compare free streaming services, account requirements and ad-supported options.',
   });
 
   const filteredSites = useMemo(() => {
@@ -56,12 +56,12 @@ export function FreeMoviesPage() {
       <PageHeader
         eyebrow="HABARI movie guide"
         title="Find your next movie night."
-        description="Compare free movie and TV services, learn how each viewing option works, and visit the platform to check its current catalogue."
+        description="Explore free movie streaming services, compare what each one offers, and head straight to its official website."
       >
         <div className="mt-7 flex flex-wrap items-center gap-3 text-sm text-slate-600">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-white px-3 py-1.5 font-medium">
             <ShieldCheck className="h-4 w-4 text-success-600" aria-hidden="true" />
-            Third-party platforms
+            Legal streaming options
           </span>
           <span className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-white px-3 py-1.5 font-medium">
             <Sparkles className="h-4 w-4 text-primary-700" aria-hidden="true" />
@@ -78,7 +78,7 @@ export function FreeMoviesPage() {
               Great stories. More ways to watch. <span className="text-cyan-300">No subscription required.</span>
             </h2>
             <p className="mt-4 max-w-xl leading-relaxed text-slate-300">
-              Explore services that offer free films or channels. Catalogues, viewing rules and availability can change by title, device and country.
+              Browse trusted platforms with free films and shows. Availability can vary by country and titles may rotate.
             </p>
           </div>
           <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-indigo-900 via-slate-900 to-cyan-950 p-7 shadow-2xl">
@@ -94,7 +94,7 @@ export function FreeMoviesPage() {
             </div>
             <div className="relative mt-6 flex items-center gap-2 text-sm font-medium text-cyan-200">
               <span className="h-2 w-2 rounded-full bg-emerald-400" />
-              Links to platform websites
+              Curated links to official platforms
             </div>
           </div>
         </div>
@@ -138,7 +138,7 @@ export function FreeMoviesPage() {
           <div>
             <p className="text-sm font-semibold uppercase tracking-wider text-primary-700">Explore platforms</p>
             <h2 className="mt-2 text-2xl font-bold text-navy-900 sm:text-3xl">Where to watch for free</h2>
-            <p className="mt-2 text-slate-600">Compare the access notes, then check the platform itself for current titles, restrictions and terms.</p>
+            <p className="mt-2 text-slate-600">Search by service name or filter by how access works.</p>
           </div>
           <p className="text-sm font-medium text-slate-500" aria-live="polite">
             Showing {filteredSites.length} of {MOVIE_SITES.length} services
@@ -213,7 +213,7 @@ export function FreeMoviesPage() {
                       rel="noopener noreferrer"
                       className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-primary-700 px-4 py-3 text-sm font-semibold text-white transition hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-200"
                     >
-                      Visit platform website
+                      Visit official website
                       <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                       <span className="sr-only">(opens in a new tab)</span>
                     </a>
@@ -241,58 +241,14 @@ export function FreeMoviesPage() {
           <div className="flex items-start gap-3">
             <ShieldCheck className="mt-0.5 h-6 w-6 shrink-0 text-success-600" aria-hidden="true" />
             <div>
-              <h3 className="font-bold text-navy-900">A quick note before you press play</h3>
+              <h3 className="font-bold text-navy-900">Watch safely and legally</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                HABARI does not host, upload, or stream movies. This page is an independent directory of third-party services, not a guarantee that every title is free, licensed for every location, or currently available. Open the platform directly, confirm the title and viewing terms in your country, and avoid unofficial mirror sites or pages that ask you to install unknown software.
+                HABARI does not host, upload, or stream movies. We provide links to third-party services. Always use their official websites,
+                check availability in your country, and review their terms before creating an account.
               </p>
             </div>
           </div>
         </div>
-
-        <section className="mt-12 grid gap-6 lg:grid-cols-3" aria-labelledby="free-movies-guide">
-          <div className="lg:col-span-3">
-            <p className="text-sm font-semibold uppercase tracking-wider text-primary-700">Make a smarter choice</p>
-            <h2 id="free-movies-guide" className="mt-2 text-2xl font-bold text-navy-900 sm:text-3xl">How to choose a free movie service</h2>
-            <p className="mt-3 max-w-3xl leading-relaxed text-slate-600">
-              “Free” can mean different things. Some services show adverts, some ask you to create an account, and some offer a changing selection of films. A quick check before watching can save time and help you avoid misleading links.
-            </p>
-          </div>
-          <article className="rounded-2xl border border-slate-200 bg-white p-6">
-            <h3 className="font-bold text-navy-900">1. Check the viewing model</h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-600">Look for notes about adverts, free accounts, rentals or paid upgrades. A service may offer both free and paid content, so confirm the price on the title page.</p>
-          </article>
-          <article className="rounded-2xl border border-slate-200 bg-white p-6">
-            <h3 className="font-bold text-navy-900">2. Check your location</h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-600">Streaming catalogues and supported devices differ by country. Search the service’s own help pages if a title or app is not available where you live.</p>
-          </article>
-          <article className="rounded-2xl border border-slate-200 bg-white p-6">
-            <h3 className="font-bold text-navy-900">3. Use the real website</h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-600">Check the web address before signing in. Avoid pop-ups that promise downloads, browser extensions or special players from unfamiliar websites.</p>
-          </article>
-        </section>
-
-        <section className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8" aria-labelledby="free-movies-faq">
-          <p className="text-sm font-semibold uppercase tracking-wider text-primary-700">Helpful answers</p>
-          <h2 id="free-movies-faq" className="mt-2 text-2xl font-bold text-navy-900">Free movie streaming: common questions</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            <article>
-              <h3 className="font-bold text-navy-900">Are all movies on these services free?</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">No. A platform may mix free, ad-supported titles with rentals, purchases or subscription content. Check the individual title before you start.</p>
-            </article>
-            <article>
-              <h3 className="font-bold text-navy-900">Do I need to create an account?</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">It depends on the service and sometimes the device. Review its current sign-in requirements before sharing personal information.</p>
-            </article>
-            <article>
-              <h3 className="font-bold text-navy-900">Why can’t I find the same film everywhere?</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">Streaming rights, release windows and regional catalogues change. A film available today may move or disappear later.</p>
-            </article>
-            <article>
-              <h3 className="font-bold text-navy-900">Does HABARI stream or own these movies?</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">No. HABARI provides information and links only. Each platform controls its own catalogue, playback, accounts and terms.</p>
-            </article>
-          </div>
-        </section>
 
         <AdSlot className="mt-12" />
       </section>
