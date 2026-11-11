@@ -86,15 +86,16 @@ export function Header() {
               const active = isActive(pathname, item.to);
               return (
                 <li key={item.to}>
-                  <Link
-                    to={item.to}
+                  <a
+                    href={item.to}
                     aria-current={active ? 'page' : undefined}
+                    onClick={() => setMenuOpen(false)}
                     className={`block rounded-xl px-4 py-3 text-base font-semibold transition ${
                       active ? 'bg-fuchsia-500/20 text-fuchsia-100' : 'text-violet-100 hover:bg-white/10'
                     }`}
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 </li>
               );
             })}
